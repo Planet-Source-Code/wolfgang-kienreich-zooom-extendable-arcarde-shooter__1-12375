@@ -1,0 +1,21 @@
+BEGIN
+	LIFE 100000
+	LIFE 250000
+	LIFE 500000
+	LIFE 1000000
+	LIFE 2500000
+	LIFE 5000000
+	LIFE 10000000
+
+	LEVEL default_space
+	LEVEL default_orbit
+	LEVEL default_surface
+	LEVEL default_home
+
+	PLAYER
+
+		LIFES 3
+		HITPOINTS 300
+
+
+END
