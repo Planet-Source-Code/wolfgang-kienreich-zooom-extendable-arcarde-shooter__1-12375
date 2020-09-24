@@ -1,0 +1,586 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Zooom</title>
+</head>
+
+<body bgcolor="#000000" text="#008080" background="background.gif">
+
+<p align="center"><strong><u><font color="#8080FF" face="Arial" size="5">Overview</font></u></strong></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">Zooom
+          is a classical arcade style action game. You are in control of a
+          fighter that can move across the screen and fire various weapons,
+          while enemies continue to stream in from the upper screen border. But
+          Zooom features modern technology: A DirectX enhanced engine,
+          all-rendered graphics and lots of features guarantee for an up to date
+          gaming experience, while bringing back&nbsp; the unique feeling of
+          action games that are rarely released in this time of rts, threedee
+          and roleplaying. In addition, Zooom is highly customizable: Players
+          can create their own levels using the built-in scripting language, and
+          advanced users can even create plugins containing whole new sets of
+          enemy graphics and behavior.<br>
+          <br>
+          This page gives you a brief overview on how to play Zooom: How does
+          the interface work, what weapons, powerups, fighters and enemies can
+          you expect, and how can the game be configured. Creation of custom
+          levels and plugins is treated in another section.</font></p>
+
+          <p align="center"><font color="#8080C0" size="1" face="Arial">Have
+          fun!&nbsp;<br>
+          </font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<p align="center"><strong><u><font color="#8080FF" face="Arial" size="5">
+<br>
+<a name="Interface"></a>
+Interface</font></u></strong></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">The
+          interface of Zooom consists of a master window which behaves just
+          (well, nearly) like your everyday window. It can be moved, even during
+          gameplay, and closed. There are several special areas the game uses to
+          display information during gameplay, which are described below.</font></p>
+
+          <p align="center"><font color="#8080C0" size="1" face="Arial">During
+          interaction with the menu interface, there are four buttons visible on
+          the right of the viewport area. Button one, START GAME will commit
+          whatever campaign you have selected using button two, CAMPAIGN. Button
+          three, SETTINGS, provides a screen in which you can set sound volume,
+          detail level, difficulty and joystick support. Button four, COMMUNITY,
+          displays information on the Zooom webpage and the program itself.<br>
+          &nbsp;</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" rowspan="7" width="250"><img
+        src="iface.gif" width="300" height="350" alt="Interface Map"></td>
+        <td valign="top" align="left"><font color="#8080C0" size="4"
+        face="Arial"><strong>1 </strong></font><font
+        color="#8080C0" size="1" face="Arial">Damage display. If
+        this meter reaches zero, you will loose a fighter. While
+        shields are operating, you will take no damage.</font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" size="4"
+        face="Arial"><strong>2 </strong></font><font
+        color="#8080C0" size="1" face="Arial">Shield display.
+        Shields protect you from taking damage, but will
+        gradually deplete when you are hit by enemy fire or if
+        you collide with objects.</font></td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" size="4"
+        face="Arial"><strong>3 </strong></font><font
+        color="#8080C0" size="1" face="Arial">Fighter fleet.
+        Displays the number of fighters left in your fleet. If
+        you loose the last fighter in your fleet, the game is
+        over.</font></td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" size="4"
+        face="Arial"><strong>4 </strong></font><font
+        color="#8080C0" size="1" face="Arial">Power-on lamp and
+        button. Click on this to close the ZOOOM window and exit
+        the game.</font></td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" size="4"
+        face="Arial"><strong>5</strong></font><font
+        color="#8080C0" size="1" face="Arial">Move bar. Move the
+        ZOOOM window by grabbing this bar with the mouse.</font></td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" size="4"
+        face="Arial"><strong>6 </strong></font><font
+        color="#8080C0" size="1" face="Arial">Sattelite view of
+        game world. Your score, the highscore (HI) and the score at which the
+          next extralife will be granted (UP) is displayed here..</font></td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0"
+        size="4" face="Arial"><strong>7 </strong></font><font
+        color="#8080C0" size="1" face="Arial">Frames-per-second
+        meter. If this bar is below 50%, you should reduce detail
+        levels.</font></td>
+        <td width="50"></td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><font color="#8080FF" face="Arial" size="5"><strong><u><a name="Controls"></a>Controls</u></strong></font></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">Controlling
+          Zooom is extremely simple a task. To preserve the original arcarde
+          feeling, there are just buttons for movement and one action button. Of
+          course, you can use your joystick instead, and doing so is in fact
+          highly recommended.<br>
+          &nbsp;</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td width="60" align="center" valign="middle">&nbsp;<img border="0" src="keyup.gif" alt="Up" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>UP</b>&nbsp;</font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Press the up arrow key on your keyboard or push your joystick up
+          to toggle through menu options in the interface, or to move your
+          fighter upwards in the game.&nbsp;</font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td width="60" align="center" valign="middle">&nbsp;<img border="0" src="keydown.gif" alt="Down" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>DOWN</b>&nbsp;</font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Press the down arrow key on your keyboard or push your joystick
+          down to toggle through menu options in the interface, or to move your
+          fighter downwards in the game.</font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td width="60" align="center" valign="middle"><img border="0" src="keyleft.gif" alt="Left" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>LEFT</b>&nbsp;</font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Press the left arrow key on your keyboard or push your joystick
+          left to change the selected menu option in the interface, or to move
+          your fighter left in the game.</font></td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td width="60" align="center" valign="middle"><img border="0" src="keyright.gif" alt="Right" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>RIGHT</b>&nbsp;</font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Press the right arrow key on your keyboard or push your joystick
+          right to change the selected menu option in the interface, or to move
+          your fighter right in the game.</font></td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td width="60" align="center" valign="middle"><img border="0" src="keyspace.gif" alt="Space" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>ACTION</b>&nbsp;</font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Press the space key on your keyboard or push your joystick
+          button to open or close a&nbsp; menu in the interface, or to fire your
+          fighters weapons in the game.</font></td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td width="60" align="center" valign="middle"><img border="0" src="keyesc.gif" alt="Escape" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>EXIT</b>&nbsp;</font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Press the escape key on your keyboard&nbsp; to quit Zooom&nbsp;
+          in the interface, or to pause and/or leave during the game.</font></td>
+        <td width="50"></td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><font color="#8080FF" face="Arial" size="5"><strong><u><a name="Gameplay"></a>Gameplay</u></strong></font></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">Zooom
+          is played with two goals in mind: To complete the campaign you are
+          playing, and to achieve a score as high as possible by shooting as
+          many enemy ships as you can. Select a campaign to play in the CAMPAIGN
+          menu. Then select START GAME to play the selected campaign. During
+          each campaign, when reaching certain score standings an extra fighter
+          will be awarded to you. This UP scores vary from campaign to campaign.<br>
+          <br>
+          Within a campaign, there are several levels to be completed. Fight
+          your way through a level and finish it to advance to the next level.
+          If you loose a fighter during a level, you will be reset to the
+          beginning of this level (NOT to the beginning of the campaign). You
+          will loose all upgrades you have collected so far, though.<br>
+          <br>
+          If you loose the last fighter in your fleet, the game is over and if
+          you have broken the highscore for the campaign you've been playing,
+          your score will be entered in the highscore table. Completing the
+          campaign makes for an entry in the highscore table, too.<br>
+          <br>
+          If you find yourself unable to complete a certain campagin, or always
+          get stuck at the same point in a level, try reducing game difficulty.
+          This can be done in the SETTINGS menu. Higher difficulty levels will
+          make your fighter's weaponry weaker and that of the enemies stronger,
+          as well as increasing enemy shoot frequency and aiming accuracy.&nbsp;</font><font color="#8080C0" size="1" face="Arial"><br>
+          </font><font color="#8080C0" size="1" face="Arial">
+          &nbsp;</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><font color="#8080FF" face="Arial" size="5"><strong><u><a name="Fighter"></a>Fighter</u></strong></font></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">Your
+          life in Zooom is concentrated on controlling your fighter, dodging
+          enemy fire and mowing down wave after wave of baaad aliens. But
+          behold, your fighter will not stay the same during the game. Various
+          upgrades will transform your basic weekend warrior spaceship into a
+          capable war machine able to face even the most dangerous of enemies
+          ... if you manage to get your hands on the upgrades send to you by
+          high command during your missions.<br>
+          &nbsp;</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="60" valign="middle">
+          <p align="center"><img src="shipp1.gif"
+        alt="Fighter 1" width="50" height="50"></p>
+        </td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>Cannon</b>&nbsp;</font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;At first, your fighter
+        is equipped with a cannon. You can use upgrades to
+        acquire a twin-mounted or even tripple mounted cannon.
+        The cannon is quite low-powered and inaccurate, but
+        features a high firing rate.<br>
+          </font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="60" valign="middle"><img src="shipp2.gif"
+        alt="Fighter 2" width="50" height="50"></td>
+        <td valign="top" align="left"><b><font color="#8080C0" face="Arial" size="3">Laser<br>
+          </font></b><font color="#8080C0" size="1" face="Arial">&nbsp;On this level, your fighter
+        is equipped with a laser cannon. Much more powerful than
+        the basic cannon, the most significant drawback of the
+        laser is its low firing rate. In additon, maximum
+        configuration for this weapon is twin mount. Lasers are
+        also used by first level drones.<br>
+          </font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="60" valign="middle"><img src="shipp3.gif"
+        alt="Fighter 3" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Phaser<br>
+          &nbsp;</b></font><font color="#8080C0" size="1"
+        face="Arial">Basically an advanced laser cannon,
+        this weapon packs even more power into a single shot. If
+        your fighter is equipped with this one, enemy fighters
+        will not stand a chance against you. Again, the only
+        drawback is the low firing rate. Phasers can be single
+        mounted or twin mounted. Second level drones also use
+        this weapon.</font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="60" valign="middle"><img src="shipp4.gif"
+        alt="Fighter 4" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Shocker<br>
+          </b></font><font color="#8080C0" size="1"
+        face="Arial">&nbsp;Incredible powerful, the shocker is
+        the weapon of choice against heavily armored foes. By
+        disrupting electronic systems, one shot is able to do
+        about as much damage as a dozen cannon shells. Because
+        the shocker is a big assembly, its only mounting option
+        is single-mounted, in front of the fighter. As you've
+        propably expected, firing rate is very low.</font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="60" valign="middle"><img src="shipp5.gif"
+        alt="Fighter 5" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Hypergun</b></font><font color="#8080C0" size="1"
+        face="Arial"><br>
+          &nbsp;The dream of all you pilots out
+        there. Big, powerful, quickly recharging, and guess what...
+        you can even tripple-mount it! Problem is, there aren't
+        all that many hyperguns available these days.<br>
+          <br>
+ </font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="60" valign="middle"><img src="shippo.gif"
+        alt="Drone" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Drone<br>
+          &nbsp;</b></font><font color="#8080C0" size="1"
+        face="Arial">Not actually a fighter itself, a drone
+        will accompany your ship and try to protect it from enemy
+        attacks. Drones come in various configurations: Some will
+        stay behind you and give you supporting fire with laser
+        cannons, others will circle around your position and
+        blast away with heavy phasers. Always good to know you're
+        not alone out there, isn't it?</font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><font color="#8080FF" face="Arial" size="5"><strong><u><a name="Upgrades"></a>Upgrades</u></strong></font></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">As
+          mentioned above, your fighter will be upgraded during the game if you
+          manage to collect updates. But there is more than just better weapons
+          coming down on you: Mount more than one weapon a time, protect your
+          fighter with energy shields, repair battle damage or even add a new
+          ship to your fleet.<br>
+          &nbsp;</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="50" valign="middle"><img src="upp1.gif"
+        alt="Twin Mount" width="40" height="40"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Twin
+          Mount<br>
+          &nbsp;</b></font><font color="#8080C0" size="1" face="Arial">If your
+          current weapon is capable of being twin-mounted, your fighter will be
+          re-equipped with the twin-mounted version of the current weapon.<br>
+          </font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="50" valign="middle"><img src="upp2.gif"
+        alt="Tripple Mount" width="40" height="40"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Tripple
+          Mount<br>
+          &nbsp;</b></font><font color="#8080C0" size="1" face="Arial">If your
+          current weapon is capable of being tripple-mounted, your fighter will
+          be re-equipped with the tripple-mounted version of the current weapon.<br>
+          </font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="50" valign="middle"><img src="upp3.gif"
+        alt="Weapon" width="40" height="40"></td>
+        <td valign="top" align="left"><b><font color="#8080C0" face="Arial" size="3">Weapon&nbsp;<br>
+          &nbsp;</font></b><font color="#8080C0" size="1" face="Arial">Upgrades
+          your fighter to the next weapon configuration, conserving the mounts
+          you currently are equipped with. This will not work if you have the
+          hypergun equipped ... who would trade a hypergun in for something
+          else, anyway?</font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="50" valign="middle"><img src="upp4.gif"
+        alt="Shield" width="40" height="40"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Shields<br>
+          &nbsp;</b></font><font color="#8080C0" size="1" face="Arial">Charges
+          you shield banks to 100 percent. As long as there is power left in
+          your shield banks, your fighter will not take damage.<br>
+          </font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="50" valign="middle"><img src="upp5.gif"
+        alt="Repair" width="40" height="40"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Repair<br>
+          </b></font><font color="#8080C0" face="Arial" size="3"><b>&nbsp;</b></font><font color="#8080C0" size="1"
+        face="Arial">Repairs 50 percent of any damage your fighter has taken in
+          combat.</font><br>
+          <br>
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="50" valign="middle"><img src="upp6.gif"
+        alt="Drone" width="40" height="40"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Drone<br>
+          &nbsp;</b></font><font color="#8080C0" size="1"
+        face="Arial">Upgrades your fighter's drone compagnions to their next
+          configuration.</font><br>
+          <br>
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="50" valign="middle"><img src="upp7.gif"
+        alt="Fighter" width="40" height="40"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Fighter<br>
+          &nbsp;</b></font><font color="#8080C0" size="1" face="Arial">Adds a
+          fighter to your fighter fleet. Maximum nuber of fighters in you fleet
+          is nine.</font><br>
+          <br>
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><font color="#8080FF" face="Arial" size="5"><strong><u><a name="Enemies"></a>Enemies</u></strong></font></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">Know
+          your enemy: The following reference of enemy fighters is far from
+          complete and does only include ships&nbsp; from the standard pack
+          distributed with Zooom. There are more ships in the game, still more
+          in the plugins available on the Zooom official website, and finally
+          plugins provided by players will extend the variations of fleets that
+          engage you&nbsp; to infinity.<br>
+          &nbsp;</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td align="center" width="160" valign="middle"><img src="shipe1.gif"
+        alt="Enemy" width="40" height="40"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Blocker<br>
+          &nbsp;</b></font><font color="#8080C0" size="1" face="Arial">Not much
+          more than a rotating piece of metal that blocks your way. This enemy
+          construction should best be considered cannon fodder. Warning: Bigger
+          versions of this ship are said to be able to shoot back!<br>
+          </font><br>
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td align="center" width="160" valign="middle"><img border="0" src="shipe2.gif" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Gunship<br>
+          &nbsp;</b></font><font color="#8080C0" size="1" face="Arial">Mount a
+          big gun on a blocker and this is what you get. Heavily armored and
+          equipped with various weapons, the only good thing that can be said
+          about this enemy is that it can only shoot straight.</font><br>
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td align="center" width="160" valign="middle"><img border="0" src="shipe3.gif" width="50" height="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Interceptor</b></font><font color="#8080C0" face="Arial" size="3"><b><br>
+          &nbsp;</b></font><font color="#8080C0" size="1" face="Arial">Interceptors
+          tend to come in slowly and carefully at first, only to roll into
+          deadly attack runs at your positions, using their fireball cannons
+          quite frequently. A formidable enemy.<br>
+          &nbsp;</font></td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td align="center" width="160" valign="middle"><img border="0" src="shipe4.gif" width="120" height="90"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>Capital
+          ship</b></font><b><font color="#8080C0" face="Arial" size="3"><br>
+          &nbsp;</font></b><font color="#8080C0" size="1" face="Arial">There are
+          several captial ships in the enemys inventory. All of them are very
+          slow and have way to much armor for you to take on. But their deadly
+          laser towers</font><font color="#8080C0" size="1" face="Arial">, which
+          will easily track your wildest maneuvering, are vulnerable to your
+          weapons.</font></td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td align="center" width="160" valign="middle"><img border="0" src="shipe5.gif" width="160" height="160"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial" size="3"><b>The
+          Boss</b></font><font color="#8080C0" face="Arial" size="3"><b><br>
+          &nbsp;</b></font><font color="#8080C0" size="1" face="Arial">The
+          enemys command center is located here. Incredible armor and weaponry.
+          You will meet this one ... sooner or later. </font></td>
+        <td width="50"></td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><font color="#8080FF" face="Arial" size="5"><strong><u><a name="Cheating"></a>Cheating</u></strong></font></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">Yes,
+          it's possible to cheat. Yes, it takes the whole fun out of Zooom. Yes,
+          you should only use cheating if you have to test a custom level or
+          plugin, or if you have become completely frustrated by a specific
+          level. No, if you are cheating, this fact will not be broadcastet,
+          along with your name, to the Zooom website and posted there for
+          everyone to see ... that's definitely a rumor ;-).<br>
+          To Cheat, hold down CTRL key and press 1 for the next fighter weapon,
+          2 for the next mount level, 3 for the next drone level, 4 to completely repair your
+          fighter, 5 for shields and 6 to add a fighter to your fleet.<br>
+          For those of you willing to develope their own levels,&nbsp; 7 will
+          destroy your ship (is this cheating?), 8 will instantly complete the
+          current level and 9 will turn on debug mode, which displays the
+          current position within the level and turns all harmful collissions
+          off.<br>
+          </font><font color="#8080C0" size="1" face="Arial">
+          &nbsp;</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<p>&nbsp;</p>
+</body>
+</html>

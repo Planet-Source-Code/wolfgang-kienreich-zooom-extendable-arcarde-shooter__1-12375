@@ -1,0 +1,469 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Zooom</title>
+</head>
+
+<body bgcolor="#000000" text="#008080" background="background.gif">
+
+<p align="center"><strong><u><font color="#8080FF" face="Arial" size="5">Overview</font></u></strong></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">First
+          things first: This document builds on the level customization
+          technology of Zooom, so perhaps it's a good idea to read up on how to
+          build levels before entering this section.<br>
+          <br>
+          Plugins allow you to add custom enemy graphics and behavior to Zooom.
+          A plugin consists of a number of media files and a definition file
+          that tells Zooom how to use the media files. A plugin, once designed,
+          can be declared by a level and after this declaration, all media files
+          defined in the plugin are available to the level. All plugin files
+          must reside in the plugin subdirectory of Zooom. Accordingly, a plugin
+          is distributed as a zip-File, where installation consists of simply
+          unpacking the zip-File into the plugin directory.</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<p align="center"><strong><u><font color="#8080FF" face="Arial" size="5">
+<br>
+<a name="Elements"></a>Elements</font></u></strong></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left">
+
+          <p align="center"><font color="#8080C0" size="1" face="Arial">The
+          following elements can be part of a plugin and will be accepted by
+          Zooom if placed in the plugin subdirectory and defined in the plugin
+          definition..
+          <br>
+          </font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td width="60" align="center" valign="middle"><img border="0" src="back.gif" alt="Icon" width="60" height="60"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>Background
+          image</b>&nbsp;</font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Zooom displays a scrolling background image as the bottom-most
+          layer of each level. Such background images can be distributet through
+          plugins. Background images must have a width of 400 pixel, as this is
+          the width of the Zooom viewport, and may have any height. They should
+          be in 256 color resolution, not less to make for good visual
+          appearance, not more to save disk space.<br>
+          <br>
+          <i>How to create: Use one of the big graphics packages (Photoshop,
+          Photopaint) or any of a number of shareware graphic applications
+          (ULead) to create textured landscapes, the smoothen the results and
+          apply some FX filters.</i><br>
+          </font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td width="60" align="center" valign="middle">&nbsp;<img border="0" src="music.gif" alt="Icon" width="60" height="60"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>Background
+          music&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Zooom plays a midi file as a background music during each level.
+          Such midi files can be distributed through a plugin.<br>
+          <i><br>
+          How to create: Download any of a number of shareware midi editors, or,
+          even better, download one of some hundred thousands of freeware midi
+          files by unknown authors available on the net.<br>
+          <br>
+          <br>
+          </i><br>
+          </font></td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td width="60" align="center" valign="middle">&nbsp;<img border="0" src="img.gif" alt="Icon" width="60" height="60"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>Enemy
+          fighter graphics&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;The visual appearance of an enemy ship is defined through a
+          frame. A frame is a graphic file in bmp format that contains all
+          animation phases of the enemy ship. Exactly how Zooom interprets the
+          image is defined in the plugin definition file.<br>
+          <i><br>
+          How to create: Design your ships in a 3D renderer like Lightwave.
+          Render all the frames (no anti-aliasing!). You get individual files.
+          Sample files into one image (manually or with a tiny program I can
+          provide you with). Apply anti-aliasing. Save.</i></font><br>
+          <br>
+      </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td width="60" align="center" valign="middle">&nbsp;<img border="0" src="def.gif" alt="Icon" width="60" height="60"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>Definition
+          file&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;The plugin definition file tells Zooom how to interpret the
+          various ressources you are providing within the plugin.<br>
+          <br>
+          <i>How to create: Just use a text editor to write the plugin
+          definition file according to the command set described below.</i><br>
+          <br>
+          <br>
+          </font><br>
+      </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td width="60" align="center" valign="middle"></td>
+        <td valign="top" align="left"></td>
+        <td width="50"></td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><font color="#8080FF" face="Arial" size="5"><strong><u><a name="Reference"></a>Definition</u></strong></font></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">Following
+          is a definition of all commands that may appear in a plugin definition
+          file. First, some general rules: Plugin definition files must have the
+          extension *.plg. Plugin files should be named according to their theme
+          (eg. &quot;Jungle&quot;), while all related ressources placed in the
+          plugin directory should start with this theme name and an underscore
+          (eg. &quot;Jungle_Background.BMP&quot;) to avoid naming conflicts with
+          other plugins.<br>
+          <br>
+          Plugin commands are stated line by line, where lines are seperated
+          with CR/LF, exactly what you get by pressing the ENTER key on your
+          keyboard. It is possible to apply some formatting to plugin commands
+          by pressing TAB several times at the beginning of a line. The
+          according TAB characters will be ignored during interpretation. Some
+          commands have one or more arguments. Arguments must immediately follow
+          a command and have to be seperated by SPACE characters.&nbsp;<br>
+          &nbsp;</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>BEGIN&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;This command must appear before any other statements in a plg
+          file.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>END&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;This command must appear after the last valid command in a plg
+          file.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>FRAME
+          <font size="2">bmp_filename framename tilewidth tileheight anidelay</font>&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;This command declares a frame that can be used to define a new
+          enemy fighter. Frames must be declared before they are used in ship
+          definitions. The parameter <b>bmp_filename</b> must refer to an image
+          file residing in the plugin directory, and must be written without the
+          .bmp extension. The parameter <b>framename</b> assigns an internal
+          name to the frame. Under this name, the frame can be accessed when
+          declaring ships. The <b>tilewidth</b> and <b>tileheight</b> parameters
+          tell Zooom how to tile the image file you've provided. Example: An
+          image file with dimensions 360x360 would be tiled into 36 sub-images
+          having dimension 60x60 each if you provide 6x6 for tilewidth and
+          tileheight. The <b>anidelay</b>&nbsp; parameter tells Zooom in what
+          intervall to change from one sub-image to another, if automatic
+          animation is enabled (see ship command for more details). Anidelay is
+          provided in Frames, the basic unit of time measurement in Zooom. The
+          program tries to achieve 100 frames per second, so theoretically,
+          anidelay is measured in 1/100 sec. But on slower machines, the actual
+          framerate may be well below this level, and the animation delay will
+          be down, too.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>SHIP
+          <font size="2">shipname</font>&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;This command declares a new enemy ship which can be referred in
+          levels by using the parameter <b>shipname</b>. Plugin ships should be
+          named beginning with the name of their plugin theme, followed by an
+          underscore and the name choosen by the developer (eg:
+          JUNGLE_Fighter01).&nbsp;<br>
+          The ship command, in addition to defining a new ship, tells Zooom that
+          all subsequent commands that follow the ship command relate to the
+          ship just defined, until another ship command is issued.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>FRAME
+          <font size="2">framename</font>&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Issued after a SHIP command, this command tells the current ship
+          which frame to use as a graphical ressource through the parameter <b>framename</b>,
+          which refers to a frame defined previously in the plugin.</font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>ANIMATED&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells the current ship that it should simply cycle through all
+          tiles in its ressource image, and delay between cycles by the time
+          defined in the frame definition through the parameter anidelay.
+          Mutually exclusive with DIRECTED, SHOOTING and TARGETTING within a ship
+          definition.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>DIRECTED&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells the current ship that it should display tiles from its
+          ressource image according to the ships current direction. The tiles in
+          the image must be ordered from left to right, from top to bottom
+          (simply reading order), by their direction, starting with a tile that
+          shows the ship pointing up, the ship image turning clockwise. The
+          number of tiles you define does not play a role here, Zooom will
+          automatically do all necessary calculations for you. But to achieve
+          persuasive illusion of rotation, you should at least specify 18 frames
+          for the rotation. Mutually exclusive with ANIMATED, SHOOTING and TARGETTING
+          within a ship definition.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>TARGETTING&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells the current ship that it should display tiles from its
+          ressource image according to the current position of the player ship -
+          the ship seems to always point at the player. The tiles in the image
+          must be ordered from left to right, from top to bottom (simply reading
+          order), by their direction, starting with a tile that shows the ship
+          pointing up, the ship image turning clockwise. The number of tiles you
+          define does not play a role here, Zooom will automatically do all
+          necessary calculations for you. But to achieve persuasive illusion of
+          rotation, you should at least specify 18 frames for the rotation.
+          Mutually exclusive with ANIMATED, DIRECTED and SHOOTING within a ship
+          definition.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>SHOOTING&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells the current ship that it should display its full animation
+          only when it fires a shot. The number of tiles you
+          define does not play a role here, Zooom will automatically do all
+          necessary calculations for you. As the animation is just played first
+          tile&nbsp; to last tile, the first and last tile&nbsp; should form a
+          seamless transition.
+          Mutually exclusive with ANIMATED, DIRECTED and TARGETTING within a ship
+          definition.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left">
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>HITPOINTS
+          hitpoints&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Defines how hard it is to kill the current ship, and how much
+          damage the player will take when colliding with the current ship.
+          Hitpoints for the default ships provided with Zooom range from 50 for
+          the small ships, over 250 for the turrets of capital ships, to 3000
+          for the end game opponent.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>HITS
+          OFF&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells the current ship that it cannot be harmed by player shots.
+          Usefull for background animations like the bodies of captial ships.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>SCORE
+          score&nbsp;</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Defines how many score points will be awarded to the player if
+          he kills the active ship.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>EXPLOSION
+          explosize&nbsp;<br>
+          </b></font><font color="#8080C0" face="Arial" size="1">&nbsp;Defines
+          how big the explosion of the current ship should be. Values may range
+          from 0 to 4, where 0 suits the smallest ships and 4 is used for
+          endgame opponents.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>WEAPON
+          weaponnumber&nbsp;<br>
+          </b></font><font color="#8080C0" face="Arial" size="1">&nbsp;Defines
+          which weapon the current ship will use if told to attack in the level
+          definition. The following weapon configurations are defined in
+          Zooom...<br>
+          &nbsp;&nbsp; 0 ... no weapon<br>
+          &nbsp;&nbsp; 1 ... cannon shot, straight down<br>
+          &nbsp;&nbsp; 2 ... cannon shot, in direction of player ship<br>
+          &nbsp;&nbsp; 3 ... cannon shot, in direction of ship<br>
+          &nbsp;&nbsp; 4 ... fireball, straight down<br>
+          &nbsp;&nbsp; 5 ... fireball, in direction of player ship<br>
+          &nbsp;&nbsp; 6 ... fireball, in direction of ship<br>
+          &nbsp;&nbsp; 7 ... laser line, straight down<br>
+          &nbsp;&nbsp; 8 ... fireball, straight down with some deviation<br>
+          &nbsp;&nbsp; 9 ... twin cannon shots, straight down with some
+          deviations<br>
+          &nbsp;10 ... overkill, used for endgame opponents<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>COMPONENT
+          shipname offsetx offsety&nbsp;<br>
+          </b></font><font color="#8080C0" face="Arial" size="1">&nbsp;This
+          command is used to construct capital ships and other entities composed
+          of more than one ship. COMPONENT tells the current ship that when it
+          is called in a level, it should create subsequent ships of the type
+          defined with parameter <b>shipname</b> automatically. But this
+          components are not created as individual ships; Instead, they inherit
+          all relevant information like position changes or attack mode from
+          their &quot;parent&quot;, namely the ship declaring the component. To
+          allow for the components to be placed anywhere on their parent,
+          parameters <b>offsetx</b> and <b>offsety</b> provide the offset
+          position as compared to the center of the parent ship at which the
+          component should be placed.&nbsp;<br>
+          <br>
+          Note: If the parent of a component is not declared with the option
+          HITS OFF, and a component is placed inside the parent using the offset
+          parameters, the player will not be able to kill the components, as all
+          shots will hit the outlying ship and explode. This can, of course, be
+          deliberately used to create hard opponents, but when creating capital
+          ships, your intention is to provide turrets that *can* be killed, so
+          declare the parents as HITS OFF in this case. By the way, if the
+          parent is killed, all its components will of course be killed
+          instantly and automatically.</font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left">
+
+        </td>
+        <td width="50"></td>
+    </tr>
+</table>
+
+<p align="center"><strong><u><font color="#8080FF" face="Arial" size="5"><a name="Examples"></a>Examples</font></u></strong></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left" bgcolor="#808080"><p align="left"><font size="1" face="Arial" color="#C0C0C0">BEGIN<br>
+          <br>
+	FRAME jungle_ship00 jungle_ship00 6 6 1<br>
+	FRAME jungle_ship01 jungle_ship01 4 3 1<br>
+	FRAME jungle_ship06 jungle_ship06 1 1 1<br>
+          <br>
+	SHIP jungle_fighter<br>
+          &nbsp;&nbsp; FRAME jungle_ship01<br>
+          &nbsp;&nbsp; HITPOINTS 50<br>
+          &nbsp;&nbsp; ANIMATED<br>
+          &nbsp;&nbsp; WEAPON 0&nbsp;<br>
+          &nbsp;&nbsp; SCORE 1000<br>
+          &nbsp;&nbsp; EXPLOSION 1<br>
+          <br>
+	SHIP jungle_turret<br>
+          &nbsp;&nbsp; FRAME jungle_ship00<br>
+          &nbsp;&nbsp; HITPOINTS 175<br>
+          &nbsp;&nbsp; TARGETTING<br>
+          &nbsp;&nbsp; WEAPON 2<br>
+          &nbsp;&nbsp; SCORE 5000<br>
+          &nbsp;&nbsp; EXPLOSION 2<br>
+          <br>
+	SHIP jungle_destroyer<br>
+          &nbsp;&nbsp; FRAME jungle_ship05<br>
+          &nbsp;&nbsp; HITPOINTS 100<br>
+          &nbsp;&nbsp; HITS OFF<br>
+          &nbsp;&nbsp; COLLISSIONS OFF<br>
+          &nbsp;&nbsp; WEAPON 0<br>
+          &nbsp;&nbsp; SCORE 0<br>
+          &nbsp;&nbsp; COMPONENT jungleturret -25 -11<br>
+          <br>
+          END</font><font color="#8080C0" size="1" face="Arial">
+          <br>
+          </font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+</body>
+</html>

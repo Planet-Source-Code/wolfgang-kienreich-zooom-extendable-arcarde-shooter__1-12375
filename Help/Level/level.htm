@@ -1,0 +1,572 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Zooom</title>
+</head>
+
+<body bgcolor="#000000" text="#008080" background="background.gif">
+
+<p align="center"><strong><u><font color="#8080FF" face="Arial" size="5">Overview</font></u></strong></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">Zooom
+          allows you to create custom levels using a simple script language.
+          Levels are stored as text files in the LEVEL subdirectory. The
+          extension of level files is *.lvl. A level file consists of several
+          lines of code, the syntax of which is described below. Programming
+          your own level is easier than it may seem: Take a look at some of the
+          levels provided with Zooom, perhaps copy some lines of code to your
+          new levels and I guarantee that you will have your first custom level
+          working in under five minutes.</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<p align="center"><strong><u><font color="#8080FF" face="Arial" size="5">
+<br>
+<a name="Structure"></a>Code Structure</font></u></strong></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">A
+          level file consists of two sections. In the general section, placed at
+          the beginning of the code, you declare global properties like
+          background image, music and plugins. In the second section, the
+          timeline, you define which enemy ships will appear on the screen at
+          what time during the level, and what behavior they will show.<br>
+          <br>
+          The timeline, as used in the AT or OFFSET commands (see commands), is
+          measured in frames. For example, AT 250 would mean at the point when
+          250 frames have been rendered since the start of the level. Zooom
+          tries to achieve a framerate of 100 frames per second, so
+          theoretically, a timeline difference of 100 should equal one second,
+          but on slower machines, the framerate may go down and the timeline
+          will be stretched, too.<br>
+          <br>
+          Within the timeline, you have a first level, the ship definition, to
+          your command that controlls what ships are thrown on the screen. After
+          issuing a SHIP command, all following commands relate to the ship
+          you've specified, until you issue another SHIP command.<br>
+          <br>
+          Within a SHIP command, you may issue a WAYPOINT command. This tells
+          the ship to add a new waypoint to its internal list of waypoints. All
+          waypoint-related commands following a waypoint command relate to that
+          waypoint, until another waypoint is declared for the current ship or
+          another ship is declared.<br>
+          <br>
+          When you test your levels, you can use CTRL + 9 at any time during the
+          game to turn on level debug mode. This mode disables collission
+          checking and displays the current level timeline position on the
+          screen.</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><font color="#8080FF" face="Arial" size="5"><strong><u><a name="Reference"></a>Command
+reference</u></strong></font></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">Level
+          commands are stated line by line, where lines are seperated
+          with CR/LF, exactly what you get by pressing the ENTER key on your
+          keyboard. It is possible to apply some formatting to level commands
+          by pressing TAB several times at the beginning of a line. The
+          according TAB characters will be ignored during interpretation. Some
+          commands have one or more arguments. Arguments must immediately follow
+          a command and have to be seperated by SPACE characters.&nbsp;</font><font color="#8080C0" size="1" face="Arial"><br>
+          &nbsp;</font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>BEGIN</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;This command must be the first command line in every level. It
+          tells Zooom that from this line on, interpretation should take place.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>END</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;This command must be the last one in every level file. It tells
+          Zooom to stop interpretation and leave the level file.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>BACKGROUND
+          <font size="2">bmp_filename</font></b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;This command defines which background image to use for the
+          level. The image file can reside in the Zooom root directory (the
+          default background files are located there) or in the PLUGIN
+          subdirectory. You only have to provide the filename as argument <b>bmp_filename,
+          </b>extension and pathname will be located automatically. The bitmap
+          will be scrolled down the viewport according to the level lenght in
+          such a way that the viewport will always be filled by the background
+          image. Therefore, background images usually are 1000 to 3000 pixels
+          high. Their widht should always be 400 pixels, as this is the width of
+          the viewport.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>Length
+          </b></font><font size="2" color="#8080C0" face="Arial"><b>length</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;This command defines the lenght of the level in timeline frames
+          through the argument <b>length</b>. If not stopped by a ship (see STOP
+          LEVEL command), each new frame rendered will increase the global frame
+          counter and thus scroll the background. The level is considered as
+          solved when the global framecounter reaches the standing defined by
+          this command. If the computer Zooom is run on achieves full framerate,
+          length / 100 equals level duration in seconds, eg. LENGTH 2500 would
+          make for a level having duration of 25 seconds.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>MUSIC
+          <font size="2">mid_filename</font></b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;This command defines which background music&nbsp; to use for the
+          level. The music midi&nbsp; file can reside in the Zooom root
+          directory (the default music&nbsp; files are located there) or in the
+          PLUGIN subdirectory. You only have to provide the filename as argument
+          <b>mid_filename, </b>extension and pathname will be located
+          automatically.&nbsp;<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>PLUGIN
+          </b><font size="2"><b>plugin_name</b></font></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;This command declares that the level will be able to access all
+          media and definitions provided in the plugin file specified by
+          argument <b>plugin_name</b>. In this argument, you have to specify the
+          name of a valid plugin definition file (extension .plg) that is
+          located in the plugin subdirectory.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>AT </b><font size="2"><b>timeline_point</b></font></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Sets the current timeline position to the point specified with
+          the <b>timeline_point</b> paramter. Valid values range from 0 to the
+          level length specified using the LENGTH command.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>OFFSET
+          <font size="2">timeline_offset</font></b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Sets the current timeline position by adding or subtracting a
+          specific amount of time from the current position as defined by the
+          last AT or OFFSET command. This command is usefull for grouping
+          enemies together: Assume you want a diagonal row of enemies coming
+          straight down on you ... the row would start with an AT command, but
+          to offset the individual ships against each other, you would just
+          issue and OFFSET command. If you then want to move the whole fleet in
+          the timeline, you would just have to change the initial AT statement,
+          as all the offsets would stay the same.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>SHIP
+          </b><font size="2"><b>ship</b></font></font><font size="2" color="#8080C0" face="Arial"><b>_name</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Starts a new ship at the current position in the timeline. The
+          ship is created from the template whose name you provide through the <b>ship_name</b>
+          parameter. All subsequent commands will relate to this ship, until you
+          issue another ship command.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>WAYPOINT
+          <font size="2">horizontal/vertical position_percent</font></b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells a ship where to enter the game, or where to next change
+          its direction, speed and other behavioral properties. Every ship in
+          the game must have at least one initial waypoint defined.&nbsp;<br>
+          <br>
+          The first waypoint tells the ship where to enter: HORIZONTAL means the
+          ship will enter from top, at the horizontal position provided in the <b>position_percent</b>
+          argument. Left equals 0%, right equals 100%. VERTICAL means that the
+          ship will enter from the side, at the vertical position provided. Top
+          equals 0%, bottom equals 100%. With VERTICAL, the direction command to
+          the waypoint specifies if the ship enters from left or from right:
+          With a direction larger than 180 degree, the ship will enter from the
+          right, with one below 180 degree, it will enter from the left.<br>
+          <br>
+          Any further waypoints will applie their settings to the ship when they
+          are reached by the ship, in the order you've provided the waypoints.
+          The horizontal and vertical positions now must be read as kind of
+          &quot;lines&quot;: For example, a waypoint at HORIZONTAL 50 means that
+          the waypoint is considered reached as soon as the ship crosses the
+          vertical middle line of the screen, while a VERTICAL 25 waypoint would
+          be applied as soon as the ship enters the upper quarter of the screen.<br>
+          <br>
+          If a ship hits no waypoint (no matter if you didn't specify one or if
+          it is programmed badly, meaning that the following waypoints can never
+          be reached due to direction of the ship), the ship will leave the
+          screen sooner or later. If this happens, in other words, if the image
+          of a ship is completely off the screen, the ship is automatically
+          removed from the list of active ships.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>DIRECTION
+          <font size="2">degrees</font></b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells a ship that at the current waypoint, it should turn to the
+          direction provided through the <b>degrees</b> parameter. Degrees are
+          measured with zero degrees meaning &quot;pointing up&quot;, and are
+          counted clockwise. So 0 means up, 90 means right, 180 means down and
+          270 means left.<br>
+          <br>
+          A special form of this command replaces the direction argument by the
+          word PLAYER. So, the DIRECTION PLAYER command tells the ship to change
+          its direction in a way that it is coming directly towards the players
+          current position.</font><font color="#8080C0" face="Arial" size="1"><br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>SPEED
+          </b><font size="2"><b>pixelperframe</b></font></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells a ship that at the current waypoint, it should change its
+          speed to the setting provided with argument <b>pixelperframe</b>. A
+          value of above 10 for speed is quite fast, and may lead to slightly
+          shaky graphical impressions, as the ship jumps over more than one
+          pixel a rendering frame. Note: You can improve graphical impression by
+          increasing speed in steps of 5: 5, 10, 15, 20.&nbsp;<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>ATTACK
+          </b><font size="2"><b>attack_propability</b></font></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells a ship to fire its weapons with a propability of <b>attack_propability</b>
+          % each time the weapons have been reloaded. Note: Even at the 100%
+          setting, weapons will not fire continuously. Despite this fact, a
+          setting of 50% is already considered very high.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>STOP
+          LEVEL</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells the timeline to stop advancing until in another waypoint
+          of the same ship, a RESUME LEVEL command is issued, or the ship leaves
+          the screen or is destroyed. Cewl option for endgame opponents, but
+          also usefull to save background image space.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>RESUME
+          LEVEL</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Resumes advancing the timeline after a stop level command has
+          been issued.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>CIRCLE
+          <font size="2">clockwise/counterclockwise radius</font></b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells the ship to fly a circle having the radius provided
+          through the argument <b>radius</b>, in the provided direction. After
+          the circle has been flown, the ship will continue to fly in the
+          direction provided by the DIRECTION command for the waypoint. The
+          radius should range from 1 to 5, not more as is is an argument
+          relative to the framesize of the ship and not measured in pixel or
+          frames.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left"><font color="#8080C0" face="Arial"><b>LOOP
+          waypoint_number</b></font><font color="#8080C0" face="Arial" size="1"><br>
+          &nbsp;Tells the ship to regard the waypoint provided through <b>waypoint_number</b>
+          as the next waypoint. The number starts with the initial waypoint
+          having number 1. Usefull for, e.g., letting an endgame opponent
+          continuously fly around before your nose.<br>
+          </font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><strong><u><font color="#8080FF" face="Arial" size="5">
+<a name="Structure"></a>Campaigns</font></u></strong></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">To
+          bring some levels together in a campaign that will appear when you
+          select the campaign menu in Zooom, you have to provide a campaign file
+          in the level subdirectory. A campagin file must have file extension
+          .cpn and follows a similiar syntax as the level file: It starts with
+          BEGIN, it ends with END and commands inbetween may be preceeded by
+          TABs for formatting.</font><br>
+          <br>
+          <font color="#8080C0" size="1" face="Arial">There are two major
+          commands within a campagin file: The LIFE command, followed by the
+          score at which another extralife should be rewarded, and the LEVEL
+          command, which defines a level that will appear in the campagin. Lifes
+          will be rewarded whenever your score reaches one of the defined marks.
+          Note: Score standings must be entered in ascending ordern.&nbsp;
+          Levels will appear in the campaign in the order they appear in the
+          campaign definition file.<br>
+          <br>
+          Regarding score keeping: Don't mind the *.sco-files that appear in the
+          level subdirectory; Zooom will automatically create them and keep them
+          up to date.</font><br>
+          </p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><strong><u><font color="#8080FF" face="Arial" size="5"><a name="Examples"></a>Examples</font></u></strong></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left" bgcolor="#808080"><p align="left"><font size="1" face="Arial" color="#C0C0C0">BEGIN<br>
+          &nbsp;&nbsp;&nbsp;<br>
+          &nbsp;&nbsp; BACKGROUND space<br>
+          &nbsp;&nbsp; MUSIC music1<br>
+          &nbsp;&nbsp; LENGTH 4500<br>
+          <br>
+          &nbsp;&nbsp; AT 25<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHIP default_blocker1<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT VERTICAL 20<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 90<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 15<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHIP default_blocker1<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT VERTICAL 20<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 270<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 15<br>
+          <br>
+          &nbsp;&nbsp; AT 50<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHIP default_blocker1<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT VERTICAL 30<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 90<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 15<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHIP default_blocker1<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT VERTICAL 30<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 270<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 15<br>
+          <br>
+          &nbsp;&nbsp; AT 75<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHIP default_blocker1<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT VERTICAL 40<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 90<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 15<br>
+          &nbsp;<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHIP default_blocker1<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT VERTICAL 40<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 270<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 15<br>
+          <br>
+          <br>
+          &nbsp;&nbsp; AT 350</font></p>
+
+          <p align="left"><font size="1" face="Arial" color="#C0C0C0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          SHIP default_interceptor1<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT HORIZONTAL 25<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 180<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 10<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STOP LEVEL<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT VERTICAL 50<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CIRCLE CLOCKWISE 2<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 180<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 10<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ATTACK 50&nbsp;<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; RESUME LEVEL<br>
+          </font></p>
+
+          <p align="left"><font size="1" face="Arial" color="#C0C0C0"><br>
+          &nbsp;&nbsp; AT 2200<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SHIP default_boss<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT HORIZONTAL 50<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 180<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 10<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ATTACK 50<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT VERTICAL 50<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 90<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 10<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; STOP LEVEL<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ATTACK 50<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT HORIZONTAL 90<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 270<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ATTACK 50<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 10<br>
+          <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; WAYPOINT HORIZONTAL 10<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; DIRECTION 90<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ATTACK 50<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; SPEED 10<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; LOOP 2</font></p>
+
+          <p align="left"><font size="1" face="Arial" color="#C0C0C0"><br>
+          END</font><font color="#8080C0" size="1" face="Arial">
+          <br>
+          </font></p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+    <tr>
+        <td width="50"></td>
+        <td valign="top" align="left" bgcolor="#808080"><font size="1" face="Arial" color="#C0C0C0">BEGIN<br>
+          &nbsp;&nbsp;&nbsp;<br>
+          </font>&nbsp; <font size="1" face="Arial" color="#C0C0C0">LIFE 100000<br>
+          &nbsp;&nbsp; LIFE 250000<br>
+          &nbsp;&nbsp; LIFE 500000<br>
+          &nbsp;&nbsp; LIFE 1000000<br>
+          &nbsp;&nbsp;</font><font size="1" face="Arial" color="#C0C0C0"><br>
+          &nbsp;&nbsp; </font><font size="1" face="Arial" color="#C0C0C0">LEVEL default_space<br>
+          &nbsp;&nbsp; LEVEL default_orbit<br>
+          &nbsp;&nbsp; LEVEL default_surface<br>
+          <br>
+          END</font>
+
+        </td>
+        <td width="50"></td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+<p align="center"><strong><u><font color="#8080FF" face="Arial" size="5"><a name="Ships"></a>List
+of built-in ships and powerups</font></u></strong></p>
+
+<table border="0" width="100%">
+    <tr>
+        <td width="50">&nbsp;</td>
+        <td valign="top" align="left"><p align="center"><font color="#8080C0" size="1" face="Arial">The
+          following ships may be used in levels...<br>
+          <br>
+          DEFAULT_BLOCKER1 (tiny, rotates, no weapon)<br>
+          DEFAULT_BLOCKER2 (small, rotates, no weapon)<br>
+          DEFAULT_BLOCKER3 (medium, rotates, laser straight down)<br>
+          DEFAULT_GUNSHIP1 (large, animated at shot, fireball straight down)<br>
+          DEFAULT_GUNSHIP2&nbsp; (huge, animated at shot, twin cannon straight
+          down)<br>
+          DEFAULT_INTERCEPTOR1 (small, directed, cannon shot)<br>
+          DEFAULT_INTERCEPTOR2 (large, directed, fireball shot)<br>
+          DEFAULT_CAPITAL1 (medium, animated, one turret)<br>
+          DEFAULT_CAPITAL2 (large, animated, two turrets)<br>
+          DEFAULT_CAPITAL3 (huge, still, four turrets)<br>
+          DEFAULT_BOSS (endgame opponent, animated)<br>
+          DEFAULT_ROCK1 (small asteroid)<br>
+          DEFAULT_ROCK2 (large asteroid)<br>
+          <br>
+          And this are the codes for the powerups, which behave exactly like
+          ships, except that you cannot easily tell them to attack the player
+          ;-)<br>
+          <br>
+          TWINMOUNT<br>
+          TRIPPLEMOUNT<br>
+          WEAPON<br>
+          SHIELD<br>
+          REPAIR<br>
+          DRONE<br>
+          LIFE</font></p>
+
+          <p align="center">&nbsp;</p>
+
+        </td>
+        <td width="50">&nbsp;</td>
+    </tr>
+</table>
+
+<p align="center">&nbsp;</p>
+
+</body>
+</html>
